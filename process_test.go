@@ -1,11 +1,11 @@
 package main
 
 import (
-    "testing"
+	"testing"
 )
 
 func TestProcmanConfFromJsonOk(t *testing.T) {
-    json := `
+	json := `
     {
         "working_dir": "/tmp",
         "procman_dir": "/procman",
@@ -21,18 +21,18 @@ func TestProcmanConfFromJsonOk(t *testing.T) {
         ]
     }` // Properly close the JSON string
 
-    config, err := procmanConfFromJson(json)
-    if err != nil {
-        t.Fatalf("Expected no error, got %v", err)
-    }
+	config, err := procmanConfFromJson(json)
+	if err != nil {
+		t.Fatalf("Expected no error, got %v", err)
+	}
 
-    // Add assertions to validate the parsed config
-    if config.WorkingDir != "/tmp" {
-        t.Errorf("Expected working_dir to be /tmp, got %s", config.WorkingDir)
-    }
-    if config.ProcmanDir != "/procman" {
-        t.Errorf("Expected procman_dir to be /procman, got %s", config.ProcmanDir)
-    }
+	// Add assertions to validate the parsed config
+	if config.WorkingDir != "/tmp" {
+		t.Errorf("Expected working_dir to be /tmp, got %s", config.WorkingDir)
+	}
+	if config.ProcmanDir != "/procman" {
+		t.Errorf("Expected procman_dir to be /procman, got %s", config.ProcmanDir)
+	}
 }
 
 func TestProcmanConfFromJsonMissingField(t *testing.T) {
